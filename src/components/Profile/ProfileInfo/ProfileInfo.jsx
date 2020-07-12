@@ -1,18 +1,28 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
-
+import Preloader from '../../common/Preloader/Preloader';
+import defaultUserPhoto from '../../../assets/defaultUserPhoto.png'
 
 const ProfileInfo = (props) => {
-    return (
-        <div className={s.container}>
-            <div className={s.container__img}>
-                <img src='https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350' alt="backImg"/>
+
+    if(!props.profile) {
+        return <Preloader />
+    }
+    else {
+        return (
+            <div className={s.container}>
+                <div>
+                    <img src={props.profile.photos.large ? props.profile.photos.large : defaultUserPhoto} alt=""/>
+                </div>
+                <div className={s.container__description}>
+                    <p>Обо мне: </p>
+                    <h4>{props.profile.aboutMe}</h4>
+                    <p>В поиске работы: {props.profile.lookingForAJob ? "да" : "нет"} </p>
+                    <p>Дополнительная информация: {props.profile.lookingForAJobDescription}</p>
+                </div>
             </div>
-            <div className={s.container__description}>
-                ava + description
-            </div>
-        </div>
-    )
-}
+        )
+    }
+};
 
 export default ProfileInfo;
