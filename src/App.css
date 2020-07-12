@@ -1,0 +1,8 @@
+.app-wrapper {
+    margin: 0 auto;
+    display: grid;
+    width: 1200px;
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 1fr 4fr;
+    font-family: 'Roboto', sans-serif;
+}

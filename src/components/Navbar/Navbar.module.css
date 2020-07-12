@@ -1,0 +1,72 @@
+.nav {
+    background-color: burlywood;
+    box-sizing: border-box;
+}
+
+.item {
+    color: white;
+    font-size: 25px;
+    margin-top: 30px;
+    padding-left: 20px;
+}
+
+.item:first-child {
+    margin-top: 40px;
+}
+
+.item > a {
+    text-decoration: none;
+    color: white;
+}
+
+.item > a:hover {
+    border-bottom: solid white 2px;
+}
+
+.item > a:active{
+    color: greenyellow;
+    border-bottom: solid greenyellow 2px;
+}
+
+.item .activeLink {
+    color: gold;
+}
+
+.item:last-child > a {
+    font-size: 30px;
+}
+
+.item:last-child {
+    padding-left: 0;
+    text-align: center;
+}
+
+
+.item__friends{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.item__friends img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+}
+
+.item__friendsElem > a{
+    text-decoration: none;
+}
+
+.item__friendsElem > a:visited{
+    color: inherit;
+}
+
+.item__friendsElem > a:hover{
+     color: green;
+ }
+
+.item__friendsElem > a:active{
+    color: red;
+}

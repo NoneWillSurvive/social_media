@@ -1,0 +1,140 @@
+.container {
+    padding-left: 20px;
+    display: grid;
+}
+
+.search {
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+
+}
+
+.search > input[type="button"] {
+    margin-left: 15px;
+    width: 80px;
+    height: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.search > input[type="text"] {
+    width: 200px;
+    height: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.user {
+    display: grid;
+    grid-template: 3fr 1fr / 100px 1fr;
+    margin-bottom: 20px;
+    grid-column-gap: 15px;
+}
+
+.user__image {
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    justify-self: center;
+    align-self: center;
+}
+
+.user__followButton {
+    font-size: 16px;
+    justify-self: center;
+    display: inline-block;
+    width: 90px;
+    height: 40px;
+    line-height: 2em;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    color: rgb(0,0,0);
+    outline: none;
+    border: 1px solid rgba(0,0,0,.4);
+    border-top-color: rgba(0,0,0,.3);
+    border-radius: 2px;
+    background: linear-gradient(rgb(255,255,255), rgb(240,240,240));
+    box-shadow:
+            0 0 3px rgba(0,0,0,0) inset,
+            0 1px 1px 1px rgba(255,255,255,.2),
+            0 -1px 1px 1px rgba(0,0,0,0);
+    transition: .2s ease-in-out;
+}
+.user__followButton:hover {
+    box-shadow:
+            0 0 3px rgba(0,0,0,0) inset,
+            0 1px 1px 1px rgba(0,255,255,.5),
+            0 -1px 1px 1px rgba(0,255,255,.5);
+}
+.user__followButton:active {
+    background: linear-gradient(rgb(250,250,250), rgb(235,235,235));
+    box-shadow:
+            0 0 3px rgba(0,0,0,.5) inset,
+            0 1px 1px 1px rgba(255,255,255,.4),
+            0 -1px 1px 1px rgba(0,0,0,.1);
+}
+
+
+.description {
+    padding: 20px 40px 20px 40px;
+    grid-row: 1 / 3;
+    grid-column: 2 / 3;
+    border: 1px solid #a8abbf;
+    border-radius: 30px;
+    display: grid;
+    grid-template: 1fr 1fr / 70% 1fr;
+    align-items: center;
+}
+
+.description__status {
+    grid-row: 2 / 3;
+    font-style: italic;
+    font-size: 25px;
+}
+
+.description__fullName{
+    font-size: 35px;
+}
+
+.description__city{
+    font-size: 25px;
+    justify-self: right;
+    align-self: end;
+    padding-bottom: 5px;
+}
+
+.description__country{
+    font-size: 25px;
+    justify-self: right;
+    align-self: start;
+    padding-top: 5px;
+    font-style: italic;
+}
+
+.pagination{
+    display: inline-block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid #a8abbf;
+    border-right: none;
+    height: 30px;
+}
+
+.pagination div {
+    cursor: pointer;
+    display: inline-block;
+    width: 40px;
+    border-right: 1px solid #a8abbf;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.pagination .selected {
+    font-weight: bold;
+
+}
