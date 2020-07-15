@@ -1,34 +1,34 @@
 import React from 'react';
 import Profile from "./Profile";
 import * as axios from "axios";
-import {setUserProfile} from "../../redux/profileReducer";
+import {getMyProfile, getProfile} from "../../redux/profileReducer";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-
+import Preloader from "../common/Preloader/Preloader";
 
 
 class ProfileContainer extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
     componentDidMount() {
+        // match пришел из withRouter - как отслеживание URLa
         let userId = this.props.match.params.userId;
-        if(!this.props.match.params.userId) {
-            // здесьдолжен быть id залогиненного пользователя.
-            // пока захаркодена 2
-            userId = 2;
+        if (!userId && !this.props.isFetched) {
+            this.props.getMyProfile();
+        } else {
+            this.props.getProfile(userId);
         }
-        axios.get("https://social-network.samuraijs.com/api/1.0/profile/" + userId).then( response =>{
-            this.props.setUserProfile(response.data);
-            }
-        );
     }
+
 
     render() {
         return (
-            <Profile {...this.props} profile={this.props.profile} isLogined={this.props.isLogined}/>
+            this.props.isFetched ?
+                <Preloader/> :
+                <Profile {...this.props} profile={this.props.profile} isLogined={this.props.isLogined}/>
         )
     }
 }
@@ -36,8 +36,9 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         isLogined: state.auth.isLogined,
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile,
+        isFetched: state.profilePage.isFetched
     }
 };
 
-export default connect(mapStateToProps, {setUserProfile} )(withRouter(ProfileContainer));
+export default connect(mapStateToProps, {getMyProfile, getProfile})(withRouter(ProfileContainer));

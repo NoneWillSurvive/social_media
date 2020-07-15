@@ -32,12 +32,15 @@
     grid-column-gap: 15px;
 }
 
+.user__a {
+    text-align: center;
+    align-self: center;
+}
+
 .user__image {
     width: 80px;
     height: 80px;
     border-radius: 80px;
-    justify-self: center;
-    align-self: center;
 }
 
 .user__followButton {

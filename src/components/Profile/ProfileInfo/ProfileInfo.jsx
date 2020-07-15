@@ -11,6 +11,7 @@ const ProfileInfo = (props) => {
     else {
         return (
             <div className={s.container}>
+                <span style={{fontSize: "46px", marginLeft: "14px"}}>{props.profile.fullName}</span>
                 <div>
                     <img src={props.profile.photos.large ? props.profile.photos.large : defaultUserPhoto} alt=""/>
                 </div>

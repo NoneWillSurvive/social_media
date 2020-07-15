@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Users.module.css';
 import defaultUserPhoto from '../../assets/defaultUserPhoto.png';
 import {NavLink} from "react-router-dom";
-import {userAPI} from "../../api/api";
 
 
 let Users = (props) => {
@@ -83,7 +82,7 @@ let Users = (props) => {
 
             {props.users.map(user =>
                 <div className={s.user}>
-                    <NavLink to={`/profile/${user.id}`}> <img
+                    <NavLink className={s.user__a} to={`/profile/${user.id}`}> <img
                         src={user.photos.small ? user.photos.small : defaultUserPhoto}
                         alt="photo" className={s.user__image}/>
                     </NavLink>
@@ -99,15 +98,7 @@ let Users = (props) => {
                                 disabled={props.isFollowingInProgress.some(el => el === user.id)}
 
                                 onClick={() => {
-                                    props.toggleFollowingProgress(true, user.id);
-                                    userAPI.unfollow(user.id).then(
-                                        response => {
-                                            if (response.data.resultCode === 0) {
-                                                props.unfollow(user.id);
-                                                props.toggleFollowingProgress(false, user.id);
-                                            }
-                                        }
-                                    )
+                                    props.unfollow(user.id);
                                 }}>Unfollow</button> :
                             <button
                                 className={
@@ -118,17 +109,7 @@ let Users = (props) => {
                                 disabled={props.isFollowingInProgress.some(el => el === user.id)}
 
                                 onClick={() => {
-                                    props.toggleFollowingProgress(true, user.id);
-                                    userAPI.follow(user.id).then(
-                                        response => {
-
-                                            if (response.data.resultCode === 0) {
-                                                props.follow(user.id);
-                                                props.toggleFollowingProgress(false, user.id);
-                                            }
-                                        }
-                                    )
-
+                                    props.follow(user.id);
                                 }}>Follow</button>
                     }
 
