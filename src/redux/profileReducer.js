@@ -62,13 +62,16 @@ export const getMyProfile = () => {
     return (dispatch) => {
         dispatch(toggleIsFetched(true));
         authAPI.getAuthMe().then(data => {
-            if (data.resultCode == 0) {
+            if (data.resultCode === 0) {
                 profileAPI.getProfile(data.data.id).then(
                     data => {
                         dispatch(setUserProfile(data));
                         dispatch(toggleIsFetched(false));
                     }
                 )
+            }
+            else{
+                dispatch(toggleIsFetched(false));
             }
         })
     }

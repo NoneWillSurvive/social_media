@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import People from "./People/People";
 import Message from "./Message/Message";
+import {NavLink} from "react-router-dom";
 
 const Dialogs = (props) => {
 
@@ -20,26 +21,40 @@ const Dialogs = (props) => {
     }
 
 
-    return (
-        <div className={s.container}>
-            <h3 className={s.header}>dialogs</h3>
-            <div className={s.content}>
-                <div className={s.peoples}>
-                    <ul>
-                        { peoplesElements }
-                    </ul>
-                </div>
-                <div className={s.messages}>
-                    { messagesElements }
-                </div>
-                <div className={s.content__newMessage}>
-                    <textarea onChange={onChangeMessage}  name="newMessage" cols="30" rows="10" value={props.newDialogsText}/>
-                    <button onClick={addMessage} className={s.content__sendMessage}>Отправить</button>
-                </div>
+    if(props.isLogined) {
+        debugger
+        return (
+            <div className={s.container}>
+                <h3 className={s.header}>dialogs</h3>
+                <div className={s.content}>
+                    <div className={s.peoples}>
+                        <ul>
+                            {peoplesElements}
+                        </ul>
+                    </div>
+                    <div className={s.messages}>
+                        {messagesElements}
+                    </div>
+                    <div className={s.content__newMessage}>
+                        <textarea onChange={onChangeMessage} name="newMessage" cols="30" rows="10"
+                                  value={props.newDialogsText}/>
+                        <button onClick={addMessage} className={s.content__sendMessage}>Отправить</button>
+                    </div>
 
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
+    else {
+        return (
+            <div>
+                <h3>Вы не авторизованы. Войдите в сеть.</h3>
+                <div>
+                    <NavLink to="/login">Войти</NavLink>
+                </div>
+            </div>
+        )
+    }
 }
 
 export default Dialogs;

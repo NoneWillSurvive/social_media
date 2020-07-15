@@ -8,18 +8,19 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 
 
+
 const App = (props) => {
     return (
         <div className='app-wrapper'>
             <HeaderContainer/>
-            <NavbarContainer />
+            <NavbarContainer/>
             <div className='app-wrapper-content'>
-                <Route exact path='/' render={() => <ProfileContainer />}/>
-                 {/*не обновляет страницу профиля, если нет userID => вынужает прописать путь exact*/}
-                <Route exact path='/profile' render={() => <ProfileContainer />}/>
-                <Route path='/users' render={() => <UsersContainer />}/>
-                <Route path="/profile/:userId" render={() => <ProfileContainer />} />
-                <Route path='/dialogs' render={() => <DialogsContainer />}/>
+                <Route exact path='/' render={() => <ProfileContainer/>}/>
+                {/*не обновляет страницу профиля, если нет userID => вынужает прописать путь exact*/}
+                <Route exact path='/profile' render={() => <ProfileContainer/>}/>
+                <Route path='/users' render={() => <UsersContainer/>}/>
+                <Route path="/profile/:userId" render={() => <ProfileContainer/>}/>
+                <Route path='/dialogs' render={() => <DialogsContainer/>}/>
             </div>
         </div>
     );

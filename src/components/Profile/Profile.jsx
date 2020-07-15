@@ -7,6 +7,7 @@ import {NavLink} from "react-router-dom";
 const Profile = (props) => {
 
     if(props.isLogined){
+
         return (
             <div className={s.content}>
                 <ProfileInfo profile={props.profile}/>

@@ -39,8 +39,10 @@ export const setUserDataImage = (image, lookingJob) => ({ type: SET_USER_DATA_IN
 export const getAuthInfo = (userId) => {
     return (dispatch) => {
         authAPI.getAuthMe().then(data => {
-            let {id, email, login} = data.data;
-            dispatch(setAuthUserData(id, email, login));
+            if(data.resultCode === 0) {
+                let {id, email, login} = data.data;
+                dispatch(setAuthUserData(id, email, login));
+            }
         }).then(response => {
             profileAPI.getProfile(userId).then(
                 data => {
