@@ -28,13 +28,14 @@ class ProfileContainer extends React.Component {
 
     render() {
         return (
-            <Profile {...this.props} profile={this.props.profile}/>
+            <Profile {...this.props} profile={this.props.profile} isLogined={this.props.isLogined}/>
         )
     }
 }
 
 let mapStateToProps = (state) => {
     return {
+        isLogined: state.auth.isLogined,
         profile: state.profilePage.profile
     }
 };

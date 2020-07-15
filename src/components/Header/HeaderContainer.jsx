@@ -10,14 +10,18 @@ class HeaderContainer extends React.Component {
         axios.get("https://social-network.samuraijs.com/api/1.0/auth/me", {
             withCredentials: true
         }).then(response => {
-            let {id, email, login} = response.data.data;
-            this.props.setAuthUserData(id, email, login);
+            if (response.data.resultCode == 0) {
+                let {id, email, login} = response.data.data;
+                this.props.setAuthUserData(id, email, login);
+            }
         }).then(response => {
-            axios.get("https://social-network.samuraijs.com/api/1.0/profile/" + this.props.id).then(
-                response => {
-                    this.props.setUserDataImage(response.data.photos.small, response.data.lookingForAJob);
-                }
-            )
+            if (this.props.isLogined) {
+                axios.get("https://social-network.samuraijs.com/api/1.0/profile/" + this.props.id).then(
+                    response => {
+                        this.props.setUserDataImage(response.data.photos.small, response.data.lookingForAJob);
+                    }
+                )
+            }
 
         })
     }

@@ -63,6 +63,25 @@
             0 -1px 1px 1px rgba(0,0,0,0);
     transition: .2s ease-in-out;
 }
+
+.user__followButton__disable {
+    font-size: 16px;
+    justify-self: center;
+    display: inline-block;
+    width: 90px;
+    height: 40px;
+    line-height: 2em;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    color: grey;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.4);
+    border-radius: 2px;
+
+}
+
 .user__followButton:hover {
     box-shadow:
             0 0 3px rgba(0,0,0,0) inset,
