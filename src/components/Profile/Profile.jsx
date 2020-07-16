@@ -5,27 +5,12 @@ import MyPostsContainer from "./MyPosts/myPostsContainer";
 import {NavLink} from "react-router-dom";
 
 const Profile = (props) => {
-
-    if(props.isLogined){
-
-        return (
-            <div className={s.content}>
-                <ProfileInfo profile={props.profile}/>
-                <MyPostsContainer />
-            </div>
-        )
-    }
-    else {
-        return (
-            <div>
-                <h3>Вы не авторизованы. Войдите в сеть.</h3>
-                <div>
-                    <NavLink to="/login">Войти</NavLink>
-                </div>
-            </div>
-        )
-    }
-
+    return (
+        <div className={s.content}>
+            <ProfileInfo profile={props.profile}/>
+            <MyPostsContainer/>
+        </div>
+    )
 }
 
 export default Profile;
