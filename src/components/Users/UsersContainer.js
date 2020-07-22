@@ -71,6 +71,4 @@ let mapStateToProps = (state) => {
     }
 };
 
-let UsersContainer = connect(mapStateToProps, {follow, unfollow, getUsers})(UsersAPIContainer);
-
-export default UsersContainer;
+export default connect(mapStateToProps, {follow, unfollow, getUsers})(UsersAPIContainer);

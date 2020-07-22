@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 export const withRedirect = (Component) => {
     class WrapperContainer extends React.Component {
         render() {
+            debugger;
             if (!this.props.isLogined) return <Redirect to={"/login"}/>
             return <Component {...this.props}/>
         }
