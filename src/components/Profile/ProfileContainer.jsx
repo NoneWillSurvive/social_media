@@ -1,6 +1,6 @@
 import React from 'react';
 import Profile from "./Profile";
-import {getMyProfile, getProfile} from "../../redux/profileReducer";
+import {getMyProfile, getMyStatus, getProfile, getStatus, updateStatus} from "../../redux/profileReducer";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import Preloader from "../common/Preloader/Preloader";
@@ -17,19 +17,26 @@ class ProfileContainer extends React.Component {
     componentDidMount() {
         // match пришел из withRouter - как отслеживание URLa
         let userId = this.props.match.params.userId;
+
         if (!userId && !this.props.isFetched) {
             this.props.getMyProfile();
+            this.props.getMyStatus();
         }
         else {
             this.props.getProfile(userId);
+            this.props.getStatus(userId);
         }
+
     }
 
     render() {
         return (
             this.props.isFetched ?
                 <Preloader/> :
-                <Profile {...this.props} profile={this.props.profile} isLogined={this.props.isLogined}/>
+                <Profile {...this.props} profile={this.props.profile}
+                         isLogined={this.props.isLogined}
+                         status={this.props.status}
+                         updateStatus={this.props.updateStatus} />
         )
     }
 }
@@ -37,12 +44,13 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        isFetched: state.profilePage.isFetched
+        isFetched: state.profilePage.isFetched,
+        status: state.profilePage.status
     }
 };
 
 export default compose(
-    connect(mapStateToProps, {getMyProfile, getProfile}),
+    connect(mapStateToProps, {getMyProfile, getProfile, getStatus, updateStatus, getMyStatus}),
     //withRedirect,
     withRouter
 )(ProfileContainer);
