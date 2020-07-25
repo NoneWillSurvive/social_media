@@ -17,7 +17,6 @@ class ProfileContainer extends React.Component {
     componentDidMount() {
         // match пришел из withRouter - как отслеживание URLa
         let userId = this.props.match.params.userId;
-
         if (!userId && !this.props.isFetched) {
             this.props.getMyProfile();
             this.props.getMyStatus();

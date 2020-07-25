@@ -71,6 +71,7 @@ export const getMyProfile = () => {
     return (dispatch) => {
         dispatch(toggleIsFetched(true));
         authAPI.getAuthMe().then(data => {
+            debugger
             if (data.resultCode === 0) {
                 profileAPI.getProfile(data.data.id).then(
                     data => {
@@ -107,11 +108,13 @@ export const getStatus = (userId) => {
 export const getMyStatus = () => {
     return (dispatch) => {
         authAPI.getAuthMe().then(data => {
+            if(data !== 0) {
                 profileAPI.getStatus(data.data.id).then(
                     data => {
                         dispatch(setStatus(data));
                     }
                 )
+            }
         })
     }
 }
