@@ -6,6 +6,7 @@ import {withRouter} from "react-router-dom";
 import Preloader from "../common/Preloader/Preloader";
 import {withRedirect} from "../hoc/withRedirect";
 import {compose} from "redux";
+import {getIsFetchedS, getProfileS, getStatusS} from "../../redux/selectors/profileSelector";
 
 
 class ProfileContainer extends React.Component {
@@ -42,9 +43,9 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        profile: state.profilePage.profile,
-        isFetched: state.profilePage.isFetched,
-        status: state.profilePage.status
+        profile: getProfileS(state),
+        isFetched: getIsFetchedS(state),
+        status: getStatusS(state)
     }
 };
 

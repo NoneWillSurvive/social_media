@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Login from "./Login";
+import {getIsLoginedS} from "../../redux/selectors/authSelector";
 
 
 class LoginContainer extends React.Component {
@@ -16,7 +17,7 @@ class LoginContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        isLogined: state.auth.isLogined
+        isLogined: getIsLoginedS(state)
     }
 };
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Navbar from "./Navbar";
+import {getFriendsS} from "../../redux/selectors/navbarSelector";
 
 let mapStateToProps = (state) => {
     return {
-        friends: state.navbar.friends
+        friends: getFriendsS(state)
     }
 };
 

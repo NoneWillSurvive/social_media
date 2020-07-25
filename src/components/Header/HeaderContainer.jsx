@@ -2,6 +2,13 @@ import React from 'react';
 import Header from "./Header";
 import {getAuthInfo} from "../../redux/authReducer";
 import {connect} from "react-redux";
+import {
+    getAuthIdS,
+    getIsLoginedS,
+    getLoginS,
+    getLookingForAJobS,
+    getMiniAvatarS
+} from "../../redux/selectors/authSelector";
 
 class HeaderContainer extends React.Component {
 
@@ -18,11 +25,11 @@ class HeaderContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        id: state.auth.id,
-        isLogined: state.auth.isLogined,
-        login: state.auth.login,
-        miniAvatar: state.auth.miniAvatar,
-        lookingForAJob: state.auth.lookingForAJob
+        id: getAuthIdS(state),
+        isLogined: getIsLoginedS(state),
+        login: getLoginS(state),
+        miniAvatar: getMiniAvatarS(state),
+        lookingForAJob: getLookingForAJobS(state)
     }
 };
 

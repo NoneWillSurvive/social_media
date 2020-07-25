@@ -4,6 +4,7 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {withRedirect} from "../hoc/withRedirect";
 import {compose} from "redux";
+import {getMessagesS, getNewDialogsTextS, getPeoplesS} from "../../redux/selectors/dialogsSelector";
 
 
 class DialogsContainer extends React.Component {
@@ -18,9 +19,9 @@ class DialogsContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        peoples: state.dialogsPage.peoples,
-        messages: state.dialogsPage.messages,
-        newDialogsText: state.dialogsPage.newDialogsText
+        peoples: getPeoplesS(state),
+        messages: getMessagesS(state),
+        newDialogsText: getNewDialogsTextS(state)
     }
 };
 

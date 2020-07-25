@@ -6,6 +6,13 @@ import {
     unfollow
 } from "../../redux/usersReducer";
 import Preloader from "../common/Preloader/Preloader";
+import {
+    getCurrentPageS,
+    getIsFetchedUserS, getIsFollowingInProgressS,
+    getPageSizeS,
+    getTotalUserCountS,
+    getUsersS
+} from "../../redux/selectors/usersSelector";
 
 class UsersAPIContainer extends React.Component {
 
@@ -62,12 +69,12 @@ class UsersAPIContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        pageSize: state.usersPage.pageSize,
-        currentPage: state.usersPage.currentPage,
-        isFetched: state.usersPage.isFetched,
-        isFollowingInProgress: state.usersPage.isFollowingInProgress
+        users: getUsersS(state),
+        totalUsersCount: getTotalUserCountS(state),
+        pageSize: getPageSizeS(state),
+        currentPage: getCurrentPageS(state),
+        isFetched: getIsFetchedUserS(state),
+        isFollowingInProgress: getIsFollowingInProgressS(state)
     }
 };
 
